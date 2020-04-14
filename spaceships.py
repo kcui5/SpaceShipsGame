@@ -49,7 +49,7 @@ class Enemy():
         self.enemyYPos = self.enemyYPos + 3
         screen.blit(enemyImg, (self.enemyXPos, self.enemyYPos))
         for bullet in bulletsList:
-            if bullet.getX() > self.enemyXPos - 20 and bullet.getX() < self.enemyXPos + 20:
+            if bullet.getX() > self.enemyXPos - 20 and bullet.getX() < self.enemyXPos + 30:
                 if bullet.getY() > self.enemyYPos - 20 and bullet.getY() < self.enemyYPos + 50:
                     return False
         return True
@@ -116,7 +116,7 @@ def play():
             if not enemy.update(listOfBullets):
                 listOfEnemies.remove(enemy)
                 screen.blit(blackBkgd, (enemy.getX(), enemy.getY()))
-            if enemy.getY() > 690:
+            if enemy.getY() > 535:
                 alive = False
 
         pygame.display.flip()
