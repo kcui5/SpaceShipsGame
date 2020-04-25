@@ -14,6 +14,7 @@ largeFont = pygame.font.SysFont("leelawadeeuisemilight", 48)
 smallFont = pygame.font.SysFont("leelawadeeuisemilight", 36)
 shipImg = pygame.image.load('shipimage.png')
 blackBkgd = pygame.image.load('blackbackground.png')
+wideBlackBkgd = pygame.image.load('wideblackbackground.png')
 bulletImg = pygame.image.load('bullet.png')
 enemyImg = pygame.image.load('enemy.png')
 clock = pygame.time.Clock()
@@ -85,6 +86,7 @@ def play():
     pygame.display.flip()
     listOfBullets = []
     listOfEnemies = []
+    score = 100
 
     alive = True
     while alive:
@@ -116,8 +118,15 @@ def play():
             if not enemy.update(listOfBullets):
                 listOfEnemies.remove(enemy)
                 screen.blit(blackBkgd, (enemy.getX(), enemy.getY()))
+                score += 100
             if enemy.getY() > 535:
                 alive = False
+
+        #Score
+        scoreText = largeFont.render(f"SCORE: {score}", 1, textColor)
+        scoreTextPos = scoreText.get_rect(x=480, y = 100)
+        screen.blit(wideBlackBkgd, scoreTextPos)
+        screen.blit(scoreText, scoreTextPos)
 
         pygame.display.flip()
     homeScreen()
