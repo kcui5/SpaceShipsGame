@@ -6,7 +6,7 @@ import sys
 
 pygame.init()
 
-random.seed(time.time())
+random.seed()
 screen = pygame.display.set_mode((1200, 700))
 textColor = (255, 255, 255)
 buttonColor = (192, 192, 192)
